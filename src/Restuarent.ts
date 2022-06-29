@@ -1,5 +1,5 @@
 import {CalendarManager} from './CalendarManager/CalendarManager';
-import { Order } from './Order/Order';
+import { TableStatus } from './Order/TableStatus';
 import {HumanManager} from './Human/HumanManager';
 
 
@@ -10,11 +10,12 @@ export class Restaurant {
 
     //public service:
     public calendarManager: CalendarManager = new CalendarManager();
-    public order: Order;
+    public order: TableStatus;
     public human: HumanManager = new HumanManager();
 
-    constructor(address?: string, name: string) {
-        this.address = address;
+    constructor(name: string, address?: string) {
         this.name = name;
+        this.address = address;
+    
     }
 }

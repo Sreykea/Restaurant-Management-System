@@ -1,21 +1,23 @@
-import { DateTime } from "./DateTime";
+
 
 export enum EventCategory{
     Cashier_Appointment,
 }
-
 export abstract class Event{
     constructor(
         protected category: EventCategory,
-        protected start: DateTime,
-        protected end: DateTime
+        protected start: Date,
+        protected end: Date
     ){}
 
-    getStart(): DateTime {
-         return this.start; 
-    }
+   getCategory(){
+    return this.category;
+   }
 
-    getEnd(): DateTime {
-        return this.end;
+    contains(date: Date): boolean{
+        return (
+            this.start.getTime() > date.getTime() &&
+            this.end.getTime() < date.getTime()
+        )
     }
 }

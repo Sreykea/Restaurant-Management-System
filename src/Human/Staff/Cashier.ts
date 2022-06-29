@@ -1,23 +1,19 @@
-import { Gender } from "../Person";
-import {Food} from "../../../medical/Food";
-import {Staff, StaffCategory} from './StaffCategory';
-
-
+import { Food } from "../../../medical/Food";
+import { Gender, Person } from "../Person";
+import {Staff, StaffCategory } from "./Staff"
 export class Cashier extends Staff{
+    private specaility:Food[] = [];
 
-    private speciality?:Food;
-    private gender:Gender;
-    protected category = StaffCategory.cashier;
-    public phone: number;
-    
-    constructor(id:number, name:string, age:number,gender:Gender) {
-        super(id,name,age);
-        this.gender = gender;
+    constructor(name:string, age:number, gender:Gender) {
+        super(StaffCategory.Cashier, name, age, gender)
     }
-    setSpeciality(speciality:string) {  
-        this.speciality = speciality;
+    hasSpeciality(): boolean {
+        return this.specaility !== undefined;
     }
-    setPhone(phone: number){
-        this.phone = phone;
+    setSpecaility(specaility:Food) {
+        this.specaility.push(specaility);
     }
+   
+
+
 }
