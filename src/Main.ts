@@ -8,13 +8,12 @@ import { Waiter } from "./human/Staff/Waiter";
 import { CashierAppointment } from './CalendarManager/CashierAppointment';
 import { EventCategory } from './CalendarManager/Event';
 import { Food } from "../medical/Food";
+import { Drink } from "../medical/Drink";
 
 
 ///////================name of restaurant======================
 
-let restaurant = new Restaurant('hengRestaurant', '12 street PNC');
-let ronan = new Customer('Ronan', 18, Gender.female);
-let rady = new Customer('Rady', 21, Gender.male);
+let restaurant = new Restaurant('PNCRestaurant', '12 street PNC');
 
 
 
@@ -22,25 +21,37 @@ let rady = new Customer('Rady', 21, Gender.male);
 
 let heng = new Customer('heng', 23, Gender.male);
 let sreyKea = new Customer('sreykea', 21, Gender.female);
+let ronan = new Customer('Ronan', 18, Gender.male);
+let rady = new Customer('Rady', 30, Gender.male);
 restaurant.human.getCustomer(heng);
 restaurant.human.getCustomer(sreyKea);
-
-///==============table in room=====================
-
-let table1 = new Table(5)
 restaurant.human.getCustomer(ronan);
 restaurant.human.getCustomer(rady);
-table1.setCustomer(ronan);
-table1.setCustomer(rady);
+
+///==============table in room id 2=====================
+
+let table2 = new Table(2)
+restaurant.human.getCustomer(heng);
+restaurant.human.getCustomer(sreyKea);
+table2.setCustomer(heng);
+table2.setCustomer(sreyKea);
+
+///==============table in room id 5=====================
+let table5 = new Table(5)
+restaurant.human.getCustomer(ronan);
+restaurant.human.getCustomer(rady);
+table5.setCustomer(ronan);
+table5.setCustomer(rady);
 
 ///=======================food of the customer =================
 let food1 = Food.Pizza;
-ronan.addFood(food1);
-let food2 = Food.Fried;
-rady.addFood(food2);
-sreyKea.addFood(food2);
 heng.addFood(food1);
-
+let food2 = Food.Fried;
+sreyKea.addFood(food2);
+let hengdrink = Drink.coffee;
+heng.addDrinks(hengdrink);
+let keadrink = Drink.beer;
+sreyKea.addDrinks(keadrink);
 
 
 
@@ -57,14 +68,15 @@ restaurant.human.addStaff(chamWaiter);
 let starttimes = new Date('11,5,2020, 10:00:00');
 let endtimes = new Date('12, 5,2020, 12:00:00');
 
-let hengAppointment = new CashierAppointment(
+let hengEatOfTime = new CashierAppointment(
     EventCategory.Cashier_Appointment,
     starttimes, endtimes, narongCashier, sreyKea
 )
-restaurant.calendarManager.addEvent(hengAppointment);
+restaurant.calendarManager.addEvent(hengEatOfTime);
 
 ////===========console.log result ===================
 
-console.log(
-    restaurant.human,
-    hengAppointment);
+// console.log(restaurant);
+// console.log(restaurant.human);
+// console.log(hengEatOfTime);
+// console.log(restaurant, table1);
